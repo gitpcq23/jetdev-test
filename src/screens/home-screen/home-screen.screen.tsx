@@ -5,7 +5,7 @@ export const HomeScreen = () => {
   const {
     isLoading,
     list,
-    refreshing,
+    isRefreshing,
     isPagingStart,
     onEndReached,
     addFavorite,
@@ -18,7 +18,7 @@ export const HomeScreen = () => {
     <HomeScreenView
       isLoading={isLoading}
       list={list}
-      refreshing={refreshing}
+      isRefreshing={isRefreshing}
       isPagingStart={isPagingStart}
       onEndReached={onEndReached}
       addFavorite={addFavorite}

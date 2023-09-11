@@ -19,7 +19,7 @@ export const useHomeScreenHook = (): IHomeScreenProps => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [list, setList] = useState<UserDTO[]>([]);
-  const [refreshing, setRefreshing] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [isPagingStart, setIsPagingStart] = useState(false);
 
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export const useHomeScreenHook = (): IHomeScreenProps => {
   };
 
   const fetchUserList = async (isRefresh: boolean, pageNumber: number) => {
-    isRefresh ? setRefreshing(true) : setIsLoading(true);
+    isRefresh ? setIsRefreshing(true) : setIsLoading(true);
     const response = await fetchUserListAPI({
       pagingCount: DEFAULT_PAGING_COUNT,
       currentPage: pageNumber,
@@ -47,7 +47,7 @@ export const useHomeScreenHook = (): IHomeScreenProps => {
       Alert.alert(response.error);
     }
     setIsPagingStart(false);
-    isRefresh ? setRefreshing(false) : setIsLoading(false);
+    isRefresh ? setIsRefreshing(false) : setIsLoading(false);
   };
 
   const onEndReached = (): void => {
@@ -72,7 +72,7 @@ export const useHomeScreenHook = (): IHomeScreenProps => {
   return {
     isLoading,
     list: list,
-    refreshing,
+    isRefreshing,
     isPagingStart,
     onEndReached,
     addFavorite,

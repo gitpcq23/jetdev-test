@@ -11,7 +11,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
   const {
     isLoading,
     list,
-    refreshing,
+    isRefreshing,
     isPagingStart,
     onEndReached,
     addFavorite,
@@ -44,7 +44,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
           onEndReachedThreshold={0.5}
           onEndReached={onEndReached}
           refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
           }
           ListEmptyComponent={() =>
             isLoading ? (
